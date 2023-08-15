@@ -21,7 +21,7 @@ public class Quiz {
     private int currentQuestionIndex;
 
     @Column(name = "current_player")
-    private String currentPlayer;
+    private Player currentPlayer;
 
     @Column
     private boolean finished;
@@ -66,11 +66,11 @@ public class Quiz {
         this.currentQuestionIndex = currentQuestionIndex;
     }
 
-    public String getCurrentPlayer() {
+    public Player getCurrentPlayer() {
         return currentPlayer;
     }
 
-    public void setCurrentPlayer(String currentPlayer) {
+    public void setCurrentPlayer(Player currentPlayer) {
         this.currentPlayer = currentPlayer;
     }
 
