@@ -9,16 +9,18 @@ import java.util.List;
 @Entity
 @Table(name = "players")
 public class Player {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     @Column
     private String name;
+
     @OneToMany(mappedBy = "currentPlayer")
     private List<Quiz> quizzes;
 
     public Player(String name) {
-        this.id = id;
         this.name = name;
         this.quizzes = new ArrayList<Quiz>();
     }

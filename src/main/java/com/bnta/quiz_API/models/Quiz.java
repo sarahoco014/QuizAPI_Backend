@@ -2,6 +2,9 @@ package com.bnta.quiz_API.models;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Entity
 @Table(name = "quizzes")
@@ -27,8 +30,7 @@ public class Quiz {
     private int score;
 
     public Quiz() {
-        this.id = id;
-        this.questions = List<Question> questions;
+        this.questions = new ArrayList<>();
         this.currentQuestionIndex = 0;
         this.currentPlayer = null;
         this.finished = false;
