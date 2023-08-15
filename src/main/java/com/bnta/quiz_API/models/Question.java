@@ -26,7 +26,7 @@ public class Question {
     @ManyToMany(mappedBy = "quiz_id")
     private List<Quiz> quizzes;
 
-    private Question (String questionText, List<Answer> multipleChoices){
+    public Question (String questionText){
         this.questionText = questionText;
         this.multipleChoices = new ArrayList<Answer>();
         this.status = status.UNANSWERED;
