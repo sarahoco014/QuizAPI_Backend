@@ -1,9 +1,6 @@
 package com.bnta.quiz_API.services;
 
-import com.bnta.quiz_API.models.Player;
-import com.bnta.quiz_API.models.PlayerDTO;
-import com.bnta.quiz_API.models.Quiz;
-import com.bnta.quiz_API.models.QuizDTO;
+import com.bnta.quiz_API.models.*;
 import com.bnta.quiz_API.repositories.PlayerRepository;
 import com.bnta.quiz_API.repositories.QuizRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,15 +41,25 @@ public class QuizService {
 //        quizQuestionsToUpdate.setQuestions();
 //    }
 
+    // need to do handel guess method!!
+
+    public List<Question> listQuizQuestions(int id){
+        Quiz quiz = quizRepository.findById(id).get();
+        return quiz.getQuestions();
+    }
+
+    public void addQuiz(){
+        Quiz newQuiz = new Quiz();
+        quizRepository.save(newQuiz);
+        }
+
     public void addPlayerToQuiz(int playerId, int quizId){
         Quiz quiz = quizRepository.findById(quizId).get();
         Player player = playerRepository.findById(playerId).get();
         quiz.setCurrentPlayer(player);
         quizRepository.save(quiz);
     }
-
-    
-
+        
 
 
 }
