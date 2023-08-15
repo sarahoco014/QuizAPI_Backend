@@ -29,7 +29,7 @@ public class Question {
     private Question (String questionText, List<Answer> multipleChoices){
         this.questionText = questionText;
         this.multipleChoices = new ArrayList<Answer>();
-        this.status = null;
+        this.status = status.UNANSWERED;
         this.quizzes = new ArrayList<>();
     }
 
