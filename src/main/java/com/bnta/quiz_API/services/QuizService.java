@@ -18,24 +18,32 @@ public class QuizService {
     PlayerRepository playerRepository;
 
 
-    public List<Quiz> getAllQuizzes(){
-        return quizRepository.findAll();
-    }
-
-    public Quiz getQuizById(int id){
-        return quizRepository.findById(id).get();
-    }
-
-    public Quiz saveQuiz(QuizDTO quizDTO){
+//    CREATE - NEW QUIZ
+    public Quiz addQuiz(QuizDTO quizDTO){
         Quiz quizToSave = new Quiz();
         quizRepository.save(quizToSave);
         return quizToSave;
     }
 
-    public void deleteQuiz(int id){
-        quizRepository.deleteById(id);
+//    READ - INDEXES
+    public List<Quiz> getAllQuizzes(){
+        return quizRepository.findAll();
     }
 
+//    READ - SHOW BY ID
+    public Quiz getQuizById(int id){
+        return quizRepository.findById(id).get();
+    }
+
+//    READ - SHOW QUESTIONS BY QUIZ
+    public List<Question> listQuizQuestions(int id){
+        Quiz quiz = quizRepository.findById(id).get();
+        return quiz.getQuestions();
+    }
+
+
+
+//    UPDATE - UPDATE QUIZ QUESTIONS
 //    public void updateQuizQuestions(QuizDTO quizDTO, int id){
 //        Quiz quizQuestionsToUpdate = quizRepository.findById(id).get();
 //        quizQuestionsToUpdate.setQuestions();
@@ -43,23 +51,18 @@ public class QuizService {
 
     // need to do handel guess method!!
 
-    public List<Question> listQuizQuestions(int id){
-        Quiz quiz = quizRepository.findById(id).get();
-        return quiz.getQuestions();
-    }
 
-    public void addQuiz(){
-        Quiz newQuiz = new Quiz();
-        quizRepository.save(newQuiz);
-        }
-
+//    UPDATE - ADD PLAYER TO QUIZ
     public void addPlayerToQuiz(int playerId, int quizId){
         Quiz quiz = quizRepository.findById(quizId).get();
         Player player = playerRepository.findById(playerId).get();
         quiz.setCurrentPlayer(player);
         quizRepository.save(quiz);
     }
-        
 
+    //    DELETE - DELETE QUIZ
+    public void deleteQuiz(int id){
+        quizRepository.deleteById(id);
+    }
 
 }

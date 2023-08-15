@@ -15,25 +15,27 @@ public class QuestionService {
     QuestionRepository questionRepository;
 
 
-    public List<Question> getAllQuestions(){
-      return   questionRepository.findAll();
-    }
-
-    public Question getQuestionById(int id){
-        return  questionRepository.findById(id).get();
-    }
-
+//    CREATE - NEW QUESTION
     public void addQuestion(QuestionDTO questionDTO){
     Question question = new Question(questionDTO.getQuestionText());
     questionRepository.save(question);
     }
 
+//    READ - INDEXES
+    public List<Question> getAllQuestions(){
+        return   questionRepository.findAll();
+    }
 
+//    READ - SHOW BY ID
+    public Question getQuestionById(int id){
+        return  questionRepository.findById(id).get();
+    }
+
+//    DELETE - QUESTION
     public void deleteQuestion(int id){
         Question question = questionRepository.findById(id).get();
         questionRepository.deleteById(id);
     }
-
 
 //    public void updateQuestion(QuestionDTO questionDTO, int id){
 //        Question questionToUpdate = questionRepository.findById(id).get();

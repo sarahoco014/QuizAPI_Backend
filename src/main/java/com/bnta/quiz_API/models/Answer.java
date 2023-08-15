@@ -22,10 +22,10 @@ public class Answer {
         this.correctAnswer = correctAnswer;
     }
 
-    public Answer() {
-    }
+    public Answer() {}
 
 
+    //    Getters and setters
     public int getId() {
         return id;
     }

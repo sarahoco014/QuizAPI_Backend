@@ -25,9 +25,10 @@ public class Player {
         this.quizzes = new ArrayList<Quiz>();
     }
 
-    public Player() {
-    }
+    public Player() {}
 
+
+    //    Getters and setters
     public int getId() {
         return id;
     }

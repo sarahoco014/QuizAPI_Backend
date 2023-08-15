@@ -6,8 +6,7 @@ public class PlayerGuessDTO {
     public PlayerGuessDTO(String guess){
         this.guess = guess;
     }
-    public PlayerGuessDTO() {
-    }
+    public PlayerGuessDTO() {}
 
     public String getGuess() {
         return guess;

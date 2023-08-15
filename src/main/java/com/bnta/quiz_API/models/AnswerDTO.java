@@ -11,9 +11,7 @@ public class AnswerDTO {
         this.correctAnswer = correctAnswer;
     }
 
-    public AnswerDTO(){
-
-    }
+    public AnswerDTO(){}
 
     public String getAnswerText() {
         return answerText;

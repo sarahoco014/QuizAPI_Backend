@@ -8,9 +8,7 @@ public class PlayerDTO {
         this.name = name;
     }
 
-    public PlayerDTO(){
-
-    }
+    public PlayerDTO(){}
 
     public String getName() {
         return name;

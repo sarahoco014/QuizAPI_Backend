@@ -17,13 +17,17 @@ public class Question {
     private String questionText;
 
     @OneToMany(mappedBy = "question") // come back here later??
+//    In the Estate class (for the cocoaOrders lab) we had this:
+//    @JsonIgnoreProperties({"estates"})
+//    @OneToMany(mappedBy = "estate")
+//    private List<CocoOrder> cocoOrders;
     private List<Answer> multipleChoices;
 
     @Column // ??
     @Enumerated(EnumType.STRING)
     private AnswerStatus status;
 
-    @ManyToMany(mappedBy = "quiz_id")
+    @ManyToMany(mappedBy = "quiz_id") // mappedBy should only be on one side of the many to many relationship, not both if were to place it here it should be "questions" referring to questions in the Quiz class.
     private List<Quiz> quizzes;
 
     public Question (String questionText){
@@ -36,6 +40,7 @@ public class Question {
     public Question(){}
 
 
+//    Getters and setters
     public int getId() {
         return id;
     }

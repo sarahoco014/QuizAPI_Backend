@@ -17,8 +17,7 @@ public class QuestionDTO {
 
 
 
-    public QuestionDTO() {
-    }
+    public QuestionDTO() {}
 
 
     public String getQuestionText() {
