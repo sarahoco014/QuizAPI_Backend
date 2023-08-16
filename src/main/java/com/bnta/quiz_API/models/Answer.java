@@ -16,10 +16,14 @@ public class Answer {
     @Column(name = "correct_answer")
     private boolean correctAnswer;
 
+    @ManyToOne
+    @JoinColumn(name = "question_id")
+    private Question question;
 
-    public Answer( String answerText, boolean correctAnswer) {
+    public Answer( String answerText, boolean correctAnswer, Question question) {
         this.answerText = answerText;
         this.correctAnswer = correctAnswer;
+        this.question = question;
     }
 
     public Answer() {}
@@ -48,5 +52,13 @@ public class Answer {
 
     public void setCorrectAnswer(boolean correctAnswer) {
         this.correctAnswer = correctAnswer;
+    }
+
+    public Question getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(Question question) {
+        this.question = question;
     }
 }
