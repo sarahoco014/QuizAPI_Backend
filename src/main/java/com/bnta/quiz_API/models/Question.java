@@ -1,5 +1,6 @@
 package com.bnta.quiz_API.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ public class Question {
     @Column (name = "question_text")
     private String questionText;
 
+    @JsonIgnoreProperties({"question"})
     @OneToMany
     @JoinColumn(name = "question_id")
     private List<Answer> multipleChoices;
@@ -24,6 +26,7 @@ public class Question {
     @Column
     private AnswerStatus status;
 
+    @JsonIgnoreProperties({"questions"})
     @ManyToMany(mappedBy = "questions")
     private List<Quiz> quizzes;
 

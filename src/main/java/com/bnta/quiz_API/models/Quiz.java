@@ -15,7 +15,7 @@ public class Quiz {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @JsonIgnoreProperties({"questions"})
+    @JsonIgnoreProperties({"quizzes"})
     @ManyToMany
     @JoinTable(
             name = "question_quizzes",
@@ -26,6 +26,7 @@ public class Quiz {
     @Column(name = "current_question_index")
     private int currentQuestionIndex;
 
+    @JsonIgnoreProperties({"currentPlayer"})
     @ManyToOne
     @JoinColumn(name = "current_player_id")
     private Player currentPlayer;

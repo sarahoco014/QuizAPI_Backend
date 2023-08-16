@@ -1,5 +1,6 @@
 package com.bnta.quiz_API.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import org.springframework.boot.autoconfigure.web.WebProperties;
 
@@ -18,6 +19,7 @@ public class Player {
     private String name;
 
     @OneToMany(mappedBy = "currentPlayer")
+    @JsonIgnoreProperties({"currentPlayer"})
     private List<Quiz> quizzes;
 
     public Player(String name) {
@@ -28,7 +30,7 @@ public class Player {
     public Player() {}
 
 
-    //    Getters and setters
+//    Getters and setters
     public int getId() {
         return id;
     }

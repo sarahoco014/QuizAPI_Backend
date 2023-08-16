@@ -33,10 +33,11 @@ public class PlayerService {
     }
 
 //    UPDATE - EXISTING PLAYER
-    public void updatePlayer(PlayerDTO playerDTO, int id){
+    public Player updatePlayer(PlayerDTO playerDTO, int id){
         Player playerToUpdate = playerRepository.findById(id).get();
         playerToUpdate.setName(playerDTO.getName());
         playerRepository.save(playerToUpdate);
+        return  playerToUpdate;
     }
 
     //    DELETE - PLAYER

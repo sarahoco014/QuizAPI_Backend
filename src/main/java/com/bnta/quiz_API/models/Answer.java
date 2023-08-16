@@ -1,5 +1,6 @@
 package com.bnta.quiz_API.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 @Entity
@@ -16,6 +17,7 @@ public class Answer {
     @Column(name = "correct_answer")
     private boolean correctAnswer;
 
+    @JsonIgnoreProperties({"multipleChoices"})
     @ManyToOne
     @JoinColumn(name = "question_id")
     private Question question;

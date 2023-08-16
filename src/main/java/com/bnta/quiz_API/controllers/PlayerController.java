@@ -32,12 +32,26 @@ public class PlayerController {
     }
 
 
-//    GET -  SHOW BY INDEX
+//    GET - SHOW BY INDEX
     @GetMapping(value = "/{id}")
     public ResponseEntity<Player> getPlayerById(@PathVariable int id){
         Player player =playerService.getPlayerById(id);
         return new ResponseEntity<>(player, HttpStatus.OK);
     }
 
+//    UPDATE - PLAYER
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Player> updatePlayer(@RequestBody PlayerDTO playerDTO, @PathVariable int id){
+        Player player = playerService.updatePlayer(playerDTO,id);
+        return new ResponseEntity<>(player, HttpStatus.OK);
+    }
+
+
+//    DELETE - PLAYER
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Integer> deletePlayer(@PathVariable Integer id){
+        playerService.deletePlayer(id);
+        return new ResponseEntity<>(id, HttpStatus.OK);
+    }
 
 }
