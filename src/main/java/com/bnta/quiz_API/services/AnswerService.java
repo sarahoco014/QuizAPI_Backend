@@ -16,10 +16,10 @@ public class AnswerService {
     @Autowired
     QuestionRepository questionRepository;
 
-    public void addAnswer(AnswerDTO answerDTO, int questionId){
-        Answer answer = new Answer(answerDTO.getAnswerText(), answerDTO.isCorrectAnswer(),questionRepository.findById(questionId).get());
-        answerRepository.save(answer);
-    }
+//    public void addAnswer(AnswerDTO answerDTO, int questionId){
+//        Answer answer = new Answer(answerDTO.getAnswerText(), answerDTO.isCorrectAnswer(),questionRepository.findById(questionId).get());
+//        answerRepository.save(answer);
+//    }
 
     public void updateAnswer(AnswerDTO answerDTO, int answerId){
         Answer answerToUpdate = answerRepository.findById(answerId).get();

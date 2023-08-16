@@ -13,6 +13,10 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 @Component
 public class DataLoader implements ApplicationRunner {
 
@@ -32,29 +36,30 @@ public class DataLoader implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
-        // Create a question
 
-        Question question1 = new Question("What is the world's longest river?");
+        // Create a question with its answers
+
+        Question question1 = new Question(
+                "What is the world's longest river?",
+                Arrays.asList(
+                        new Answer("Nile", true),
+                        new Answer("Thames", false),
+                        new Answer("Amazon", false)
+                )
+        );
         questionRepository.save(question1);
 
-        Question question2 = new Question("What is the highest mountain in the world?");
+
+        Question question2 = new Question(
+                "What is the highest mountain in the world?",
+                Arrays.asList(
+                        new Answer("Kilimanjaro", false),
+                        new Answer("Mount Everest", true),
+                        new Answer("Ben Nevis", false)
+                )
+        );
         questionRepository.save(question2);
 
-        // Create answers
-
-        Answer answer1 = new Answer("Nile", true, question1);
-        Answer answer2 = new Answer("Thames", false, question1);
-        Answer answer3 = new Answer("Amazon", false, question1);
-        answerRepository.save(answer1);
-        answerRepository.save(answer2);
-        answerRepository.save(answer3);
-
-        Answer answer4 = new Answer("Kilimanjaro", false, question2);
-        Answer answer5 = new Answer("Ben Nevis", false, question2);
-        Answer answer6 = new Answer("Mount Everest", true, question2);
-        answerRepository.save(answer4);
-        answerRepository.save(answer5);
-        answerRepository.save(answer6);
 
 
         // Create a player

@@ -1,5 +1,6 @@
 package com.bnta.quiz_API.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
@@ -26,13 +27,13 @@ public class Question {
     @Column
     private AnswerStatus status;
 
-    @JsonIgnoreProperties({"questions"})
+    @JsonIgnore
     @ManyToMany(mappedBy = "questions")
     private List<Quiz> quizzes;
 
-    public Question (String questionText){
+    public Question (String questionText, List<Answer> multipleChoices){
         this.questionText = questionText;
-        this.multipleChoices = new ArrayList<Answer>();
+        this.multipleChoices = multipleChoices;
         this.status = AnswerStatus.UNANSWERED;
         this.quizzes = new ArrayList<>();
     }

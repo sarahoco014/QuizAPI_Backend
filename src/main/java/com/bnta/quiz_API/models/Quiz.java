@@ -1,5 +1,6 @@
 package com.bnta.quiz_API.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
@@ -15,7 +16,7 @@ public class Quiz {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @JsonIgnoreProperties({"quizzes"})
+    @JsonIgnore
     @ManyToMany
     @JoinTable(
             name = "question_quizzes",

@@ -17,15 +17,15 @@ public class Answer {
     @Column(name = "correct_answer")
     private boolean correctAnswer;
 
-    @JsonIgnoreProperties({"multipleChoices"})
+//    @JsonIgnoreProperties({"multipleChoices"})
     @ManyToOne
     @JoinColumn(name = "question_id")
     private Question question;
 
-    public Answer( String answerText, boolean correctAnswer, Question question) {
+    public Answer( String answerText, boolean correctAnswer) {
         this.answerText = answerText;
         this.correctAnswer = correctAnswer;
-        this.question = question;
+//        this.question = question;
     }
 
     public Answer() {}
@@ -56,11 +56,11 @@ public class Answer {
         this.correctAnswer = correctAnswer;
     }
 
-    public Question getQuestion() {
-        return question;
-    }
-
-    public void setQuestion(Question question) {
-        this.question = question;
-    }
+//    public Question getQuestion() {
+//        return question;
+//    }
+//
+//    public void setQuestion(Question question) {
+//        this.question = question;
+//    }
 }
