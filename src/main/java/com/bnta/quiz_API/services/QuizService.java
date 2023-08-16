@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class QuizService {
@@ -50,6 +51,43 @@ public class QuizService {
 //    }
 
     // need to do handel guess method!!
+
+
+    public AnswerStatus handleGuess(PlayerGuessDTO playerGuessDTO, int id) {
+        Optional<Quiz> optionalQuiz = quizRepository.findById(id);
+        if (optionalQuiz.isPresent()) {
+            Quiz quiz = optionalQuiz.get();
+            Question currentQuestion = quiz.getQuestions().get(quiz.getCurrentQuestionIndex());
+            // Assuming the correct answer has the property correctAnswer set to true
+            Optional<Answer> correctAnswer = currentQuestion.getMultipleChoices()
+                    .stream()
+                    .filter(Answer::isCorrectAnswer)
+                    .findFirst();
+            if (correctAnswer.isPresent()) {
+                if (correctAnswer.get().getAnswerText().equalsIgnoreCase(playerGuessDTO.getGuess())) {
+                    // Correct answer
+                    quiz.setScore(quiz.getScore() + 1); // Increase score by 1 or any logic you decide for scoring
+                    quiz.setCurrentQuestionIndex(quiz.getCurrentQuestionIndex() + 1);
+
+                    if (quiz.getCurrentQuestionIndex() == quiz.getQuestions().size()) {
+                        quiz.setFinished(true);
+                    }
+                    quizRepository.save(quiz);
+                    return AnswerStatus.CORRECT;
+
+                } else {
+                    // Incorrect answer
+                    quiz.setCurrentQuestionIndex(quiz.getCurrentQuestionIndex() + 1);
+                    if (quiz.getCurrentQuestionIndex() == quiz.getQuestions().size()) {
+                        quiz.setFinished(true);
+                    }
+                    quizRepository.save(quiz);
+                    return AnswerStatus.INCORRECT;
+                }
+            }
+        }
+        return AnswerStatus.UNANSWERED;
+    }
 
 
 //    UPDATE - ADD PLAYER TO QUIZ

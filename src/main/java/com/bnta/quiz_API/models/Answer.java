@@ -10,7 +10,7 @@ public class Answer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "answer_text")
+    @Column
     private String answerText;
 
     @Column(name = "correct_answer")
