@@ -31,6 +31,8 @@ public class QuestionService {
         return  questionRepository.findById(id).get();
     }
 
+    // get answers by question (would)
+
 //    DELETE - QUESTION
     public void deleteQuestion(int id){
         Question question = questionRepository.findById(id).get();
