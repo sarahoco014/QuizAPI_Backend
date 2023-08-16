@@ -26,8 +26,8 @@ public class Quiz {
     @Column(name = "current_question_index")
     private int currentQuestionIndex;
 
-    @OneToMany
-    @Column(name = "current_player")
+    @ManyToOne
+    @JoinColumn(name = "current_player_id")
     private Player currentPlayer;
 
     @Column

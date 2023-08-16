@@ -16,11 +16,12 @@ public class Question {
     @Column (name = "question_text")
     private String questionText;
 
-    @Column
+    @OneToMany
+    @JoinColumn(name = "question_id")
     private List<Answer> multipleChoices;
 
-    @Column // ??
     @Enumerated(EnumType.STRING)
+    @Column
     private AnswerStatus status;
 
     @ManyToMany(mappedBy = "questions")
@@ -29,7 +30,7 @@ public class Question {
     public Question (String questionText){
         this.questionText = questionText;
         this.multipleChoices = new ArrayList<Answer>();
-        this.status = status.UNANSWERED;
+        this.status = AnswerStatus.UNANSWERED;
         this.quizzes = new ArrayList<>();
     }
 
