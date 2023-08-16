@@ -50,8 +50,6 @@ public class QuizService {
 //        quizQuestionsToUpdate.setQuestions();
 //    }
 
-    // need to do handel guess method!!
-
 
     public AnswerStatus handleGuess(PlayerGuessDTO playerGuessDTO, int id) {
         Optional<Quiz> optionalQuiz = quizRepository.findById(id);
