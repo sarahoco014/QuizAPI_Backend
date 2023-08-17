@@ -2,7 +2,6 @@ package com.bnta.quiz_API.services;
 
 import com.bnta.quiz_API.models.Question;
 import com.bnta.quiz_API.models.QuestionDTO;
-import com.bnta.quiz_API.repositories.AnswerRepository;
 import com.bnta.quiz_API.repositories.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,25 +15,12 @@ public class QuestionService {
     @Autowired
     QuestionRepository questionRepository;
 
-    @Autowired
-    AnswerRepository answerRepository;
-
 //    CREATE - NEW QUESTION
-//    public void addQuestion(QuestionDTO questionDTO){
-//    Question question = new Question(questionDTO.getQuestionText(), questionDTO.getMultipleChoices());
-//    questionRepository.save(question);
-//    }
-    public void createQuestion(QuestionDTO questionDTO, AnswerDTO answerDTO1, AnswerDTO answerDTO2, AnswerDTO answerDTO3){
-        Question question = new Question(
-            questionDTO.getQuestionText(),
-            Arrays.asList(
-                    answerRepository.save(new Answer(answerDTO1.getAnswerText(),answerDTO1.isCorrectAnswer())),
-                    answerRepository.save(new Answer(answerDTO2.getAnswerText(),answerDTO2.isCorrectAnswer())),
-                    answerRepository.save(new Answer(answerDTO3.getAnswerText(),answerDTO3.isCorrectAnswer()))
-            )
-        );
-         questionRepository.save(question); // added this method that replicate how we do it in the dataloader but it is not working the same way, we may have to just have a question not take in answers as params and the multiple choices one by one.
+    public void addQuestion(QuestionDTO questionDTO){
+    Question question = new Question(questionDTO.getQuestionText(), questionDTO.getCorrectAnswer(), questionDTO.getOptions());
+    questionRepository.save(question);
     }
+
 
 //    READ - INDEXES
     public List<Question> getAllQuestions(){

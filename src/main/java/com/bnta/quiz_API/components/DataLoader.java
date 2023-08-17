@@ -3,7 +3,6 @@ package com.bnta.quiz_API.components;
 import com.bnta.quiz_API.models.Player;
 import com.bnta.quiz_API.models.Question;
 import com.bnta.quiz_API.models.Quiz;
-import com.bnta.quiz_API.repositories.AnswerRepository;
 import com.bnta.quiz_API.repositories.PlayerRepository;
 import com.bnta.quiz_API.repositories.QuestionRepository;
 import com.bnta.quiz_API.repositories.QuizRepository;

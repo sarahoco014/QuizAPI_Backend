@@ -17,16 +17,20 @@ public class Question {
     @Column (name = "question_text")
     private String questionText;
 
-    @Column(name = "multiple_choices")
-    private List<String> multipleChoices;
+    @Column (name = "correct_answer")
+    private String correctAnswer;
+
+    @Column
+    private List<String> options;
 
     @JsonIgnore
     @ManyToMany(mappedBy = "questions")
     private List<Quiz> quizzes;
 
-    public Question (String questionText, List<String> multipleChoices){
+    public Question (String questionText, String correctAnswer, List<String> options){
         this.questionText = questionText;
-        this.multipleChoices = multipleChoices;
+        this.correctAnswer = correctAnswer;
+        this.options = options;
         this.quizzes = new ArrayList<>();
     }
 
@@ -34,6 +38,7 @@ public class Question {
 
 
 //    Getters and setters
+
     public int getId() {
         return id;
     }
@@ -50,12 +55,20 @@ public class Question {
         this.questionText = questionText;
     }
 
-    public List<String> getMultipleChoices() {
-        return multipleChoices;
+    public String getCorrectAnswer() {
+        return correctAnswer;
     }
 
-    public void setMultipleChoices(List<String> multipleChoices) {
-        this.multipleChoices = multipleChoices;
+    public void setCorrectAnswer(String correctAnswer) {
+        this.correctAnswer = correctAnswer;
+    }
+
+    public List<String> getOptions() {
+        return options;
+    }
+
+    public void setOptions(List<String> options) {
+        this.options = options;
     }
 
     public List<Quiz> getQuizzes() {

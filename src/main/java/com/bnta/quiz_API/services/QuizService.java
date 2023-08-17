@@ -51,47 +51,37 @@ public class QuizService {
 //    }
 
 
-    public AnswerStatus handleGuess(PlayerGuessDTO playerGuessDTO, int id) {
+    public String handleGuess(PlayerGuessDTO playerGuessDTO, int id) {
         Optional<Quiz> optionalQuiz = quizRepository.findById(id);
         if (optionalQuiz.isPresent()) {
             Quiz quiz = optionalQuiz.get();
             Question currentQuestion = quiz.getQuestions().get(quiz.getCurrentQuestionIndex());
             // Assuming the correct answer has the property correctAnswer set to true
-            Optional<Answer> correctAnswer = currentQuestion.getMultipleChoices()
-                    .stream()
-                    .filter(Answer::isCorrectAnswer)
-                    .findFirst();
-            if (correctAnswer.isPresent()) {
-                if (correctAnswer.get().getAnswerText().equalsIgnoreCase(playerGuessDTO.getGuess())) {
-                    // Correct answer
-                    quiz.setScore(quiz.getScore() + 1); // Increase score by 1 or any logic you decide for scoring
-                    quiz.setCurrentQuestionIndex(quiz.getCurrentQuestionIndex() + 1);
-
-                    if (quiz.getCurrentQuestionIndex() == quiz.getQuestions().size()) {
-                        quiz.setFinished(true);
-                    }
-                    quizRepository.save(quiz);
-                    return AnswerStatus.CORRECT;
-
-                } else {
-                    // Incorrect answer
-                    quiz.setCurrentQuestionIndex(quiz.getCurrentQuestionIndex() + 1);
-                    if (quiz.getCurrentQuestionIndex() == quiz.getQuestions().size()) {
-                        quiz.setFinished(true);
-                    }
-                    quizRepository.save(quiz);
-                    return AnswerStatus.INCORRECT;
-                }
+            String correctAnswer = currentQuestion.getCorrectAnswer();
+            if (playerGuessDTO.getGuess().isEmpty() || playerGuessDTO.getGuess().equals("")) {
+                return "Unanswered";
             }
-            if (playerGuessDTO.getGuess().equals("")) {
-                return AnswerStatus.UNANSWERED;
+            else if (correctAnswer.equalsIgnoreCase(playerGuessDTO.getGuess())) {
+                quiz.setScore(quiz.getScore() + 1); // Increase score by 1 or any logic you decide for scoring
+                quiz.setCurrentQuestionIndex(quiz.getCurrentQuestionIndex() + 1);
+
+                if (quiz.getCurrentQuestionIndex() == quiz.getQuestions().size()) {
+                    quiz.setFinished(true);
+                }
+                quizRepository.save(quiz);
+                return "That is correct!";
+            }
+            else {
+                quiz.setCurrentQuestionIndex(quiz.getCurrentQuestionIndex() + 1);
+                if (quiz.getCurrentQuestionIndex() == quiz.getQuestions().size()) {
+                    quiz.setFinished(true);
+                }
+                quizRepository.save(quiz);
+                return "That is incorrect!";
             }
         }
-        return AnswerStatus.UNANSWERED;
+        return "";
     }
-
-
-
 
 //    UPDATE - ADD PLAYER TO QUIZ
     public void addPlayerToQuiz(int playerId, int quizId){

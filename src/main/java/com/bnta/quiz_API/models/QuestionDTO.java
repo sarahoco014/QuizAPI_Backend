@@ -7,14 +7,21 @@ public class QuestionDTO {
 
     private String questionText;
 
-    private List<String> multipleChoices;
+    private String correctAnswer;
+
+    private List<String> options;
 
     private List<Quiz> quizzes;
 
 
+    public QuestionDTO(String questionText, String correctAnswer, List<String> options) {
+        this.questionText = questionText;
+        this.correctAnswer = correctAnswer;
+        this.options = options;
+        this.quizzes = new ArrayList<>();
+    }
 
-
-    public QuestionDTO() {}
+    public QuestionDTO(){}
 
 
     public String getQuestionText() {
@@ -25,12 +32,20 @@ public class QuestionDTO {
         this.questionText = questionText;
     }
 
-    public List<String> getMultipleChoices() {
-        return multipleChoices;
+    public String getCorrectAnswer() {
+        return correctAnswer;
     }
 
-    public void setMultipleChoices(List<String> multipleChoices) {
-        this.multipleChoices = multipleChoices;
+    public void setCorrectAnswer(String correctAnswer) {
+        this.correctAnswer = correctAnswer;
+    }
+
+    public List<String> getOptions() {
+        return options;
+    }
+
+    public void setOptions(List<String> options) {
+        this.options = options;
     }
 
     public List<Quiz> getQuizzes() {
@@ -40,7 +55,6 @@ public class QuestionDTO {
     public void setQuizzes(List<Quiz> quizzes) {
         this.quizzes = quizzes;
     }
-
 }
 
 
