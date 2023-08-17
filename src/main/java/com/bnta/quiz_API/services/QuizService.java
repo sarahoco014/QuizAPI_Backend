@@ -82,10 +82,14 @@ public class QuizService {
                     quizRepository.save(quiz);
                     return AnswerStatus.INCORRECT;
                 }
+                if (playerGuessDTO.getGuess().equals("")) {
+                    return AnswerStatus.UNANSWERED;
+                }
             }
         }
-        return AnswerStatus.UNANSWERED;
     }
+
+
 
 
 //    UPDATE - ADD PLAYER TO QUIZ
