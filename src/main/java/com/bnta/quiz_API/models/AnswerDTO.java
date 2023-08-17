@@ -6,12 +6,11 @@ public class AnswerDTO {
 
     private boolean correctAnswer;
 
-    private Question question;
 
-    public AnswerDTO(String answerText, boolean correctAnswer, Question question){
+
+    public AnswerDTO(String answerText, boolean correctAnswer){
         this.answerText = answerText;
         this.correctAnswer = correctAnswer;
-        this.question = question; // comeback
     }
 
     public AnswerDTO(){}
@@ -32,11 +31,5 @@ public class AnswerDTO {
         this.correctAnswer = correctAnswer;
     }
 
-    public Question getQuestion() {
-        return question;
-    }
 
-    public void setQuestion(Question question) {
-        this.question = question;
-    }
 }
