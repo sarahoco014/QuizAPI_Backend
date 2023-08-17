@@ -18,13 +18,13 @@ public class Question {
     private String questionText;
 
     @Column (name = "correct_answer")
-    private String correctAnswer;
+    private String correctAnswer; // The correct answer is included in the options list
 
     @Column
-    private List<String> options;
+    private List<String> options; // Changed from a list of Answer objects to Strings, as it was easier to deal with.
 
     @JsonIgnore
-    @ManyToMany(mappedBy = "questions")
+    @ManyToMany(mappedBy = "questions") // many questions to many quizzes
     private List<Quiz> quizzes;
 
     public Question (String questionText, String correctAnswer, List<String> options){

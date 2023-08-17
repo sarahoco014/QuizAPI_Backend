@@ -21,7 +21,6 @@ public class QuestionService {
     questionRepository.save(question);
     }
 
-
 //    READ - INDEXES
     public List<Question> getAllQuestions(){
         return   questionRepository.findAll();
@@ -32,21 +31,10 @@ public class QuestionService {
         return  questionRepository.findById(id).get();
     }
 
-    // get answers by question (would)
-
 //    DELETE - QUESTION
     public void deleteQuestion(int id){
         Question question = questionRepository.findById(id).get();
         questionRepository.deleteById(id);
     }
-
-//    public void updateQuestion(QuestionDTO questionDTO, int id){
-//        Question questionToUpdate = questionRepository.findById(id).get();
-//        questionToUpdate.setQuestionText(questionDTO.getQuestionText());
-//        questionToUpdate.setMultipleChoices(questionDTO.getMultipleChoices());
-//    }
-
-//    updating a question would change all the questions in all quizzes, there is no need,
-//    only create and delete to avoid changing the history of player quizzes
 
 }

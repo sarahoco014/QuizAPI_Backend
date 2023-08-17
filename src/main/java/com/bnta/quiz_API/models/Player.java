@@ -18,8 +18,8 @@ public class Player {
     @Column
     private String name;
 
-    @OneToMany(mappedBy = "currentPlayer")
-    @JsonIgnoreProperties({"currentPlayer"})
+    @OneToMany(mappedBy = "currentPlayer") // One player has many quizzes
+    @JsonIgnoreProperties({"currentPlayer"})  // stops repeating after currentPlayer
     private List<Quiz> quizzes;
 
     public Player(String name) {

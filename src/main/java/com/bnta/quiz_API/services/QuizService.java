@@ -40,7 +40,7 @@ public class QuizService {
         return quizRepository.findById(id).get();
     }
 
-//    READ - SHOW QUESTIONS BY QUIZ
+//    READ - SHOW QUESTIONS BY QUIZ ID
     public List<Question> listQuizQuestions(int id){
         Quiz quiz = quizRepository.findById(id).get();
         return quiz.getQuestions();
@@ -48,43 +48,48 @@ public class QuizService {
 
 
 
-//    UPDATE - UPDATE QUIZ QUESTIONS
-//    public void updateQuizQuestions(QuizDTO quizDTO, int id){
-//        Quiz quizQuestionsToUpdate = quizRepository.findById(id).get();
-//        quizQuestionsToUpdate.setQuestions();
-//    }
-
-
     public String handleGuess(PlayerGuessDTO playerGuessDTO, int id) {
-        Optional<Quiz> optionalQuiz = quizRepository.findById(id);
+        Optional<Quiz> optionalQuiz = quizRepository.findById(id); // Optional because we want to check if the quiz exists
+
+        String output= "";
+
+//        IF QUIZ EXISTS GET QUESTION AND THE CORRECT ANSWER
         if (optionalQuiz.isPresent()) {
             Quiz quiz = optionalQuiz.get();
             Question currentQuestion = quiz.getQuestions().get(quiz.getCurrentQuestionIndex());
-            // Assuming the correct answer has the property correctAnswer set to true
             String correctAnswer = currentQuestion.getCorrectAnswer();
+
+//            CHECKING IF GUESS IS EMPTY
             if (playerGuessDTO.getGuess().isEmpty() || playerGuessDTO.getGuess().equals("")) {
-                return "Unanswered";
+                output = "Unanswered, please guess again";
             }
+
+//            CHECKING IF GUESS IS CORRECT
             else if (correctAnswer.equalsIgnoreCase(playerGuessDTO.getGuess())) {
                 quiz.setScore(quiz.getScore() + 1); // Increase score by 1 or any logic you decide for scoring
                 quiz.setCurrentQuestionIndex(quiz.getCurrentQuestionIndex() + 1);
 
+//                CHECKING IF QUIZ IS FINISHED
                 if (quiz.getCurrentQuestionIndex() == quiz.getQuestions().size()) {
                     quiz.setFinished(true);
                 }
                 quizRepository.save(quiz);
-                return "That is correct!";
+                output = "That is correct!";
             }
+
+//            SETTING GUESS AS INCORRECT
             else {
                 quiz.setCurrentQuestionIndex(quiz.getCurrentQuestionIndex() + 1);
+
+//                CHECKING IF QUIZ IS FINISHED
                 if (quiz.getCurrentQuestionIndex() == quiz.getQuestions().size()) {
                     quiz.setFinished(true);
                 }
                 quizRepository.save(quiz);
-                return "That is incorrect!";
+                output = "That is incorrect!";
             }
         }
-        return "";
+        return output;
     }
 
 //    UPDATE - ADD PLAYER TO QUIZ

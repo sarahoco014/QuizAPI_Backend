@@ -49,6 +49,12 @@ public class QuizController {
         return new ResponseEntity<>(quizService.getQuizById(id), HttpStatus.OK);
     }
 
+    //   GET - SHOW QUESTIONS BY QUIZ ID
+    @GetMapping("/{id}/questions")
+    public ResponseEntity<List<Question>> getQuestionsByQuizId(@PathVariable int id) {
+        return new ResponseEntity<>(quizService.listQuizQuestions(id), HttpStatus.OK);
+    }
+
 // UPDATE - HandleGuess
 
     @PostMapping("/{quizId}")

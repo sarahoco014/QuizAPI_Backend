@@ -40,7 +40,7 @@ public class PlayerService {
         return  playerToUpdate;
     }
 
-    //    DELETE - PLAYER
+//    DELETE - PLAYER
     public void deletePlayer(int id){
         playerRepository.deleteById(id);
     }
