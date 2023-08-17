@@ -7,9 +7,7 @@ public class QuestionDTO {
 
     private String questionText;
 
-    private AnswerStatus status;
-
-    private List<AnswerDTO> multipleChoices;
+    private List<String> multipleChoices;
 
     private List<Quiz> quizzes;
 
@@ -27,11 +25,11 @@ public class QuestionDTO {
         this.questionText = questionText;
     }
 
-    public List<AnswerDTO> getMultipleChoices() {
+    public List<String> getMultipleChoices() {
         return multipleChoices;
     }
 
-    public void setMultipleChoices(List<AnswerDTO> multipleChoices) {
+    public void setMultipleChoices(List<String> multipleChoices) {
         this.multipleChoices = multipleChoices;
     }
 
@@ -43,13 +41,6 @@ public class QuestionDTO {
         this.quizzes = quizzes;
     }
 
-    public AnswerStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(AnswerStatus status) {
-        this.status = status;
-    }
 }
 
 

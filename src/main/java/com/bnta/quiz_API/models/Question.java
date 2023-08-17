@@ -1,7 +1,6 @@
 package com.bnta.quiz_API.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -18,23 +17,16 @@ public class Question {
     @Column (name = "question_text")
     private String questionText;
 
-    @JsonIgnoreProperties({"question"})
-    @OneToMany
-    @JoinColumn(name = "question_id")
-    private List<Answer> multipleChoices;
-
-    @Enumerated(EnumType.STRING)
-    @Column
-    private AnswerStatus status;
+    @Column(name = "multiple_choices")
+    private List<String> multipleChoices;
 
     @JsonIgnore
     @ManyToMany(mappedBy = "questions")
     private List<Quiz> quizzes;
 
-    public Question (String questionText, List<Answer> multipleChoices){
+    public Question (String questionText, List<String> multipleChoices){
         this.questionText = questionText;
         this.multipleChoices = multipleChoices;
-        this.status = AnswerStatus.UNANSWERED;
         this.quizzes = new ArrayList<>();
     }
 
@@ -58,20 +50,12 @@ public class Question {
         this.questionText = questionText;
     }
 
-    public List<Answer> getMultipleChoices() {
+    public List<String> getMultipleChoices() {
         return multipleChoices;
     }
 
-    public void setMultipleChoices(List<Answer> multipleChoices) {
+    public void setMultipleChoices(List<String> multipleChoices) {
         this.multipleChoices = multipleChoices;
-    }
-
-    public AnswerStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(AnswerStatus status) {
-        this.status = status;
     }
 
     public List<Quiz> getQuizzes() {
