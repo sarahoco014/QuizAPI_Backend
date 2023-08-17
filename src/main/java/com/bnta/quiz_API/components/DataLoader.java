@@ -39,23 +39,27 @@ public class DataLoader implements ApplicationRunner {
 
         // Create a question with its answers
 
-        Question question1 = new Question(
+
+// the reason why answers didn't show on postico is because we didn't save them to answerRepository, with this change now answers show on both postico and postman (for questions made in the dataloader).
+//        );
+        Question question1= new Question(
                 "What is the world's longest river?",
                 Arrays.asList(
-                        new Answer("Nile", true),
-                        new Answer("Thames", false),
-                        new Answer("Amazon", false)
+                        answerRepository.save(new Answer("Nile", true)),
+                        answerRepository.save(new Answer("Thames", false)),
+                        answerRepository.save(new Answer("Amazon", false))
                 )
         );
+
         questionRepository.save(question1);
 
 
         Question question2 = new Question(
                 "What is the highest mountain in the world?",
                 Arrays.asList(
-                        new Answer("Kilimanjaro", false),
-                        new Answer("Mount Everest", true),
-                        new Answer("Ben Nevis", false)
+                        answerRepository.save(new Answer("Kilimanjaro", false)),
+                        answerRepository.save(new Answer("Mount Everest", true)),
+                        answerRepository.save(new Answer("Ben Nevis", false))
                 )
         );
         questionRepository.save(question2);
@@ -74,8 +78,8 @@ public class DataLoader implements ApplicationRunner {
         // Add question to quiz
 
         Quiz quiz1 = new Quiz();
-        quiz1.getQuestions().add(question1);
-        quiz1.getQuestions().add(question2);
+        quiz1.getQuestions().add(questionRepository.findById(1).get());
+//        quiz1.getQuestions().add(question2);
         quiz1.setCurrentPlayer(player1);
         quizRepository.save(quiz1);
 
