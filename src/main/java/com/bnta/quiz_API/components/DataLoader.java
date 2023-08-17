@@ -29,8 +29,8 @@ public class DataLoader implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
 
 
-        // Create a question with its answers
 
+//        CREATING QUESTIONS
         Question question1 = new Question(
                 "What is the world's longest river?",
                 "Nile",
@@ -65,24 +65,22 @@ public class DataLoader implements ApplicationRunner {
         questionRepository.save(question3);
 
 
-        // Create a player
-
+//        CREATING PLAYERS
         Player player1 = new Player("Jon");
         Player player2 = new Player("Jenifer");
         playerRepository.save(player1);
         playerRepository.save(player2);
 
-        // Create quiz
-        // Add player to quiz
-        // Add question to quiz
 
+//        ADDING QUESTIONS TO QUIZZES
         Quiz quiz1 = new Quiz();
         quiz1.getQuestions().add(questionRepository.findById(1).get());
         quiz1.getQuestions().add(questionRepository.findById(2).get());
         Quiz quiz2 = new Quiz();
         quiz2.getQuestions().add(questionRepository.findById(1).get());
         quiz2.getQuestions().add(questionRepository.findById(2).get());
-//        quiz1.getQuestions().add(question2);
+
+//        ADDING PLAYER TO QUIZZES
         quiz1.setCurrentPlayer(player1);
         quizRepository.save(quiz1);
         quizRepository.save(quiz2);
