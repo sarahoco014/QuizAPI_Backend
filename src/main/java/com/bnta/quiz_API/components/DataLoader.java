@@ -1,6 +1,5 @@
 package com.bnta.quiz_API.components;
 
-import com.bnta.quiz_API.models.Answer;
 import com.bnta.quiz_API.models.Player;
 import com.bnta.quiz_API.models.Question;
 import com.bnta.quiz_API.models.Quiz;
@@ -13,9 +12,7 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 @Component
 public class DataLoader implements ApplicationRunner {

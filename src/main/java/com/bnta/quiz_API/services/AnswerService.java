@@ -1,7 +1,5 @@
 package com.bnta.quiz_API.services;
 
-import com.bnta.quiz_API.models.Answer;
-import com.bnta.quiz_API.models.AnswerDTO;
 import com.bnta.quiz_API.repositories.AnswerRepository;
 import com.bnta.quiz_API.repositories.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;

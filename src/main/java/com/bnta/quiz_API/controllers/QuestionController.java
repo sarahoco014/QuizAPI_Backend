@@ -1,7 +1,6 @@
 package com.bnta.quiz_API.controllers;
 
 
-import com.bnta.quiz_API.models.AnswerDTO;
 import com.bnta.quiz_API.models.Question;
 import com.bnta.quiz_API.models.QuestionDTO;
 import com.bnta.quiz_API.services.QuestionService;
