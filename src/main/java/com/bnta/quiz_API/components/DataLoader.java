@@ -25,41 +25,33 @@ public class DataLoader implements ApplicationRunner {
     @Autowired
     QuestionRepository questionRepository;
 
-    @Autowired
-    AnswerRepository answerRepository;
-
-
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
 
         // Create a question with its answers
 
-
-// the reason why answers didn't show on postico is because we didn't save them to answerRepository, with this change now answers show on both postico and postman (for questions made in the dataloader).
-//        );
-        Question question1= new Question(
+        Question question1 = new Question(
                 "What is the world's longest river?",
+                "Nile",
                 Arrays.asList(
-                        answerRepository.save(new Answer("Nile", true)),
-                        answerRepository.save(new Answer("Thames", false)),
-                        answerRepository.save(new Answer("Amazon", false))
+                        "Thames",
+                        "Nile",
+                        "Amazon"
                 )
         );
-
         questionRepository.save(question1);
 
-
         Question question2 = new Question(
-                "What is the highest mountain in the world?",
+                "What is the world's highest mountain?",
+                "Mount Everest",
                 Arrays.asList(
-                        answerRepository.save(new Answer("Kilimanjaro", false)),
-                        answerRepository.save(new Answer("Mount Everest", true)),
-                        answerRepository.save(new Answer("Ben Nevis", false))
+                        "Ben Nevis",
+                        "Mount Everest",
+                        "Kilimanjaro"
                 )
         );
         questionRepository.save(question2);
-
 
 
         // Create a player
