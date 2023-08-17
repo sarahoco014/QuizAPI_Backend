@@ -11,7 +11,6 @@ public class QuestionDTO {
 
     private List<Answer> multipleChoices;
 
-
     private List<Quiz> quizzes;
 
 

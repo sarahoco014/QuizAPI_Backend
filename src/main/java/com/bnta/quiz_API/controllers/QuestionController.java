@@ -1,6 +1,7 @@
 package com.bnta.quiz_API.controllers;
 
 
+import com.bnta.quiz_API.models.AnswerDTO;
 import com.bnta.quiz_API.models.Question;
 import com.bnta.quiz_API.models.QuestionDTO;
 import com.bnta.quiz_API.services.QuestionService;
@@ -21,8 +22,8 @@ public class QuestionController {
 
     //    CREATE - Question
     @PostMapping
-    public ResponseEntity<List<Question>> createQuestion(@RequestBody QuestionDTO questionDTO){
-        questionService.addQuestion(questionDTO);
+    public ResponseEntity<List<Question>> createQuestion(@RequestBody QuestionDTO questionDTO, AnswerDTO answerDTO1, AnswerDTO answerDTO2, AnswerDTO answerDTO3){
+        questionService.createQuestion(questionDTO, answerDTO1, answerDTO2,answerDTO3);
         return new ResponseEntity(questionService.getAllQuestions(), HttpStatus.CREATED);
     }
 
