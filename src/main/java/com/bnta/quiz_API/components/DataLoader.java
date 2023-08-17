@@ -64,6 +64,83 @@ public class DataLoader implements ApplicationRunner {
         );
         questionRepository.save(question3);
 
+        Question question4 = new Question(
+                "What country has the most natural lakes?",
+                "Canada",
+                Arrays.asList(
+                        "Canada",
+                        "China",
+                        "Brazil"
+                )
+        );
+        questionRepository.save(question4);
+
+        Question question5 = new Question(
+                "How many time zones does Russia have?",
+                "11",
+                Arrays.asList(
+                        "9",
+                        "10",
+                        "11"
+                )
+        );
+        questionRepository.save(question5);
+
+        Question question6 = new Question(
+                "What is the name of the largest city in Australia?",
+                "Brisbane",
+                Arrays.asList(
+                        "Brisbane",
+                        "Melbourne",
+                        "Sydney"
+                )
+        );
+        questionRepository.save(question6);
+
+        Question question7 = new Question(
+                "In which city was the first marathon held?",
+                "Athens",
+                Arrays.asList(
+                        "Rome",
+                        "Athens",
+                        "London"
+                )
+        );
+        questionRepository.save(question7);
+
+        Question question8 = new Question(
+                "In what ocean is the Bermuda Triangle located?",
+                "Atlantic Ocean",
+                Arrays.asList(
+                        "Pacific Ocean",
+                        "Atlantic Ocean",
+                        "Arctic Ocean"
+                )
+        );
+        questionRepository.save(question8);
+
+        Question question9 = new Question(
+                "In which UK city would you find the river Clyde?",
+                "Glasgow",
+                Arrays.asList(
+                        "Edinburgh",
+                        "Aberdeen",
+                        "Glasgow"
+                )
+        );
+        questionRepository.save(question9);
+
+        Question question10 = new Question(
+                "Which continent is in all four hemispheres?",
+                "Africa",
+                Arrays.asList(
+                        "South America",
+                        "Asia",
+                        "Africa"
+                )
+        );
+        questionRepository.save(question10);
+
 
 //        CREATING PLAYERS
         Player player1 = new Player("Jon");
@@ -76,9 +153,16 @@ public class DataLoader implements ApplicationRunner {
         Quiz quiz1 = new Quiz();
         quiz1.getQuestions().add(questionRepository.findById(1).get());
         quiz1.getQuestions().add(questionRepository.findById(2).get());
+        quiz1.getQuestions().add(questionRepository.findById(3).get());
+        quiz1.getQuestions().add(questionRepository.findById(4).get());
+        quiz1.getQuestions().add(questionRepository.findById(5).get());
+
         Quiz quiz2 = new Quiz();
-        quiz2.getQuestions().add(questionRepository.findById(1).get());
-        quiz2.getQuestions().add(questionRepository.findById(2).get());
+        quiz2.getQuestions().add(questionRepository.findById(6).get());
+        quiz2.getQuestions().add(questionRepository.findById(7).get());
+        quiz2.getQuestions().add(questionRepository.findById(8).get());
+        quiz2.getQuestions().add(questionRepository.findById(9).get());
+        quiz2.getQuestions().add(questionRepository.findById(10).get());
 
 //        ADDING PLAYER TO QUIZZES
         quiz1.setCurrentPlayer(player1);
