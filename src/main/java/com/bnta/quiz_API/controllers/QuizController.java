@@ -59,6 +59,16 @@ public class QuizController {
         return new ResponseEntity(quizService.handleGuess(playerGuessDTO, quizId), HttpStatus.OK);
     }
 
+// UPDATE - AddQuestionToQuiz
+
+    @PostMapping()
+
+
+    @PostMapping("/{id}/addQuestion/{questionId}")
+    public ResponseEntity<Void> addQuestionToQuiz(@PathVariable int id, @PathVariable int questionId) {
+        quizService.addQuestionToQuiz(questionId);
+        return ResponseEntity.ok().build();
+    }
 // UPDATE - AddPlayerToQuiz
 
 //    @PatchMapping("/{quizId}/{playerId}")
