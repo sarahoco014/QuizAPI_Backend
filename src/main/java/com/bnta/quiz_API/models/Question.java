@@ -2,7 +2,6 @@ package com.bnta.quiz_API.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +23,7 @@ public class Question {
     private List<String> options; // Changed from a list of Answer objects to Strings, as it was easier to deal with.
 
     @JsonIgnore
-    @ManyToMany(mappedBy = "questions") // many questions to many quizzes
+    @ManyToMany(mappedBy = "questions") // Many questions to many quizzes
     private List<Quiz> quizzes;
 
     public Question (String questionText, String correctAnswer, List<String> options){
@@ -36,9 +35,7 @@ public class Question {
 
     public Question(){}
 
-
-//    Getters and setters
-
+//    GETTERS AND SETTERS
     public int getId() {
         return id;
     }

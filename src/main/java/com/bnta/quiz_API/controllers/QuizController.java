@@ -2,9 +2,7 @@ package com.bnta.quiz_API.controllers;
 
 import com.bnta.quiz_API.models.*;
 import com.bnta.quiz_API.services.PlayerService;
-import com.bnta.quiz_API.services.QuestionService;
 import com.bnta.quiz_API.services.QuizService;
-import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,77 +20,56 @@ public class QuizController {
     @Autowired
     PlayerService playerService;
 
-    @Autowired
-    QuestionService questionService;
-
-
-// CREATE - QUIZ
-
+//    CREATE - QUIZ
     @PostMapping
     public ResponseEntity<List<Quiz>> createQuiz(@RequestBody QuizDTO quizDTO ){
         quizService.addQuiz(quizDTO);
         return new ResponseEntity<>(quizService.getAllQuizzes(), HttpStatus.CREATED);
     }
 
-
-//    GET - get all quizzez
-
+//    GET - INDEX
     @GetMapping
     public ResponseEntity<List<Quiz>> getAllQuizzes() {
         return new ResponseEntity<>(quizService.getAllQuizzes(), HttpStatus.OK);
     }
 
-//   GET - SHOW BY ID
-
+//    GET - SHOW BY ID
     @GetMapping("/{id}")
     public ResponseEntity<Quiz> getQuizById(@PathVariable int id) {
         return new ResponseEntity<>(quizService.getQuizById(id), HttpStatus.OK);
     }
 
-    //   GET - SHOW QUESTIONS BY QUIZ ID
+//    GET - SHOW QUESTIONS BY QUIZ ID
     @GetMapping("/{id}/questions")
     public ResponseEntity<List<Question>> getQuestionsByQuizId(@PathVariable int id) {
         return new ResponseEntity<>(quizService.listQuizQuestions(id), HttpStatus.OK);
     }
 
-// UPDATE - HandleGuess
-
+//    UPDATE - HANDLE GUESS
     @PostMapping("/{quizId}")
     public ResponseEntity<String> handleGuess(@PathVariable int quizId, @RequestBody PlayerGuessDTO playerGuessDTO) {
         return new ResponseEntity(quizService.handleGuess(playerGuessDTO, quizId), HttpStatus.OK);
     }
 
-// UPDATE - AddQuestionToQuiz
-
-
-
+//    UPDATE - ADD QUESTION TO QUIZ
     @PatchMapping("/{id}/add-question/{questionId}")
     public ResponseEntity<Quiz> addQuestionToQuiz(@PathVariable int id, @PathVariable int questionId) {
         quizService.addQuestionToQuiz(questionId, id);
         return new ResponseEntity<>(quizService.getQuizById(id), HttpStatus.OK);
     }
-// UPDATE - AddPlayerToQuiz
 
-//    @PatchMapping("/{quizId}/{playerId}")
-//    public ResponseEntity<Player> addPLayerToQuiz(@PathVariable Integer quizId, Integer playerId){
-//        quizService.addPlayerToQuiz(playerId, quizId);
-//        return new ResponseEntity<>(playerService.getPlayerById(playerId), HttpStatus.OK);
-//
-//    }
-
+//    UPDATE - ADD PLAYER TO QUIZ
     @PatchMapping("/{id}/add-player/{playerId}")
     public ResponseEntity<Player> addPlayerToQuiz(@PathVariable int id, @PathVariable int playerId) {
         quizService.addPlayerToQuiz(playerId, id);
         return new ResponseEntity<>(playerService.getPlayerById(playerId), HttpStatus.OK);
     }
 
-//    DELETE - Delete Quiz
-
+//    DELETE - DELETE QUIZ
     @DeleteMapping("/{id}")
     public ResponseEntity<Integer> deleteQuiz(@PathVariable Integer id) {
         quizService.deleteQuiz(id);
         return new ResponseEntity<>(id, HttpStatus.OK);
     }
-
 }
 

@@ -10,6 +10,7 @@ public class PlayerDTO {
 
     public PlayerDTO(){}
 
+//    GETTERS AND SETTERS
     public String getName() {
         return name;
     }

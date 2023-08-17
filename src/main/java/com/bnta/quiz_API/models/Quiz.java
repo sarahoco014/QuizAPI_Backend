@@ -38,7 +38,7 @@ public class Quiz {
     @Column
     private int score;
 
-    public Quiz() {
+    public Quiz() { // Didn't need another empty constructor
         this.questions = new ArrayList<>();
         this.currentQuestionIndex = 0;
         this.currentPlayer = null;
@@ -46,12 +46,7 @@ public class Quiz {
         this.score = 0;
     }
 
-//    public Quiz(){
-//
-//    } This empty constructor gave us an error, we assumed it's because the Quiz constructor does not take any params anyway
-
-
-    //    Getters and setters
+//    GETTERS AND SETTERS
     public int getId() {
         return id;
     }

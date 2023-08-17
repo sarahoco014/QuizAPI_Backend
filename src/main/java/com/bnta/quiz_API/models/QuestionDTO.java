@@ -23,7 +23,7 @@ public class QuestionDTO {
 
     public QuestionDTO(){}
 
-
+//    GETTERS AND SETTERS
     public String getQuestionText() {
         return questionText;
     }

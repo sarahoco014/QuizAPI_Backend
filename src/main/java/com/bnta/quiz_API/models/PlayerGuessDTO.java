@@ -10,6 +10,7 @@ public class PlayerGuessDTO {
 
     public PlayerGuessDTO() {}
 
+//    GETTERS AND SETTERS
     public String getGuess() {
         return guess;
     }

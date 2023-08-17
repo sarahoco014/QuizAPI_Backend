@@ -46,8 +46,6 @@ public class QuizService {
         return quiz.getQuestions();
     }
 
-
-
     public String handleGuess(PlayerGuessDTO playerGuessDTO, int id) {
         Optional<Quiz> optionalQuiz = quizRepository.findById(id); // Optional because we want to check if the quiz exists
 
@@ -108,7 +106,7 @@ public class QuizService {
         quizRepository.save(quiz);
     }
 
-    //    DELETE - DELETE QUIZ
+//    DELETE - DELETE QUIZ
     public void deleteQuiz(int id){
         quizRepository.deleteById(id);
     }

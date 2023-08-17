@@ -16,6 +16,7 @@ public class QuizDTO {
 
     public QuizDTO(){}
 
+//    GETTERS AND SETTERS
     public int getCurrentQuestionIndex() {
         return currentQuestionIndex;
     }

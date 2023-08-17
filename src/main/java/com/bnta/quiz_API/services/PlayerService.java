@@ -3,7 +3,6 @@ package com.bnta.quiz_API.services;
 import com.bnta.quiz_API.models.Player;
 import com.bnta.quiz_API.models.PlayerDTO;
 import com.bnta.quiz_API.repositories.PlayerRepository;
-import org.hibernate.sql.Update;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -18,39 +18,27 @@ public class QuestionController {
     @Autowired
     QuestionService questionService;
 
-
-    //    CREATE - Question
+//    CREATE - Question
     @PostMapping
     public ResponseEntity<List<Question>> addQuestion(@RequestBody QuestionDTO questionDTO){
         questionService.addQuestion(questionDTO);
         return new ResponseEntity(questionService.getAllQuestions(), HttpStatus.CREATED);
     }
 
-    //    GET - INDEXES
+//    GET - INDEXES
     @GetMapping
     public ResponseEntity<List<Question>> getAllQuestions(){
         return new ResponseEntity<>(questionService.getAllQuestions(), HttpStatus.OK);
     }
 
-
-    //    GET - SHOW BY INDEX
+//    GET - SHOW BY INDEX
     @GetMapping(value = "/{id}")
     public ResponseEntity<Question> getQuestionById(@PathVariable int id){
        Question question = questionService.getQuestionById(id);
         return new ResponseEntity<>(question, HttpStatus.OK);
     }
 
-//        UPDATE - Question
-//    @PutMapping(value = "/{id}")
-//    public ResponseEntity<Question> updateQuestion(@RequestBody QuestionDTO questionDTO, @PathVariable int id){
-//        Question question = questionService.getQuestionById(id);
-//        return new ResponseEntity<>(question, HttpStatus.OK);
-//    }
-
-    //come back to this!
-
-
-    //    DELETE - Question
+//    DELETE - Question
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Integer> deleteQuestion(@PathVariable Integer id){
         questionService.deleteQuestion(id);

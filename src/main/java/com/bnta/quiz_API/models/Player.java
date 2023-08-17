@@ -2,8 +2,6 @@ package com.bnta.quiz_API.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import org.springframework.boot.autoconfigure.web.WebProperties;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,8 +27,7 @@ public class Player {
 
     public Player() {}
 
-
-//    Getters and setters
+//    GETTERS AND SETTERS
     public int getId() {
         return id;
     }

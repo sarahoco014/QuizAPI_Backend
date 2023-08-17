@@ -85,7 +85,5 @@ public class DataLoader implements ApplicationRunner {
         quizRepository.save(quiz1);
         quizRepository.save(quiz2);
 
-
-
     }
 }
