@@ -1,9 +1,6 @@
 package com.bnta.quiz_API.controllers;
 
-import com.bnta.quiz_API.models.Player;
-import com.bnta.quiz_API.models.PlayerGuessDTO;
-import com.bnta.quiz_API.models.Quiz;
-import com.bnta.quiz_API.models.QuizDTO;
+import com.bnta.quiz_API.models.*;
 import com.bnta.quiz_API.services.PlayerService;
 import com.bnta.quiz_API.services.QuestionService;
 import com.bnta.quiz_API.services.QuizService;
@@ -61,13 +58,12 @@ public class QuizController {
 
 // UPDATE - AddQuestionToQuiz
 
-    @PostMapping()
 
 
-    @PostMapping("/{id}/addQuestion/{questionId}")
-    public ResponseEntity<Void> addQuestionToQuiz(@PathVariable int id, @PathVariable int questionId) {
-        quizService.addQuestionToQuiz(questionId);
-        return ResponseEntity.ok().build();
+    @PatchMapping("/{id}/add-question/{questionId}")
+    public ResponseEntity<Quiz> addQuestionToQuiz(@PathVariable int id, @PathVariable int questionId) {
+        quizService.addQuestionToQuiz(questionId, id);
+        return new ResponseEntity<>(quizService.getQuizById(id), HttpStatus.OK);
     }
 // UPDATE - AddPlayerToQuiz
 

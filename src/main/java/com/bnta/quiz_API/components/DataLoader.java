@@ -53,6 +53,17 @@ public class DataLoader implements ApplicationRunner {
         );
         questionRepository.save(question2);
 
+        Question question3 = new Question(
+                "What is the world's largest country?",
+                "Russia",
+                Arrays.asList(
+                        "China",
+                        "Russia",
+                        "USA"
+                )
+        );
+        questionRepository.save(question3);
+
 
         // Create a player
 
