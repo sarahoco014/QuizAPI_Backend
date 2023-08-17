@@ -21,8 +21,8 @@ public class QuestionController {
 
     //    CREATE - Question
     @PostMapping
-    public ResponseEntity<List<Question>> createQuestion(@RequestBody QuestionDTO questionDTO, AnswerDTO answerDTO1, AnswerDTO answerDTO2, AnswerDTO answerDTO3){
-        questionService.createQuestion(questionDTO, answerDTO1, answerDTO2,answerDTO3);
+    public ResponseEntity<List<Question>> addQuestion(@RequestBody QuestionDTO questionDTO){
+        questionService.addQuestion(questionDTO);
         return new ResponseEntity(questionService.getAllQuestions(), HttpStatus.CREATED);
     }
 

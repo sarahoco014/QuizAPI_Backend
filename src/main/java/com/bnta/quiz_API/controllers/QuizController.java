@@ -54,7 +54,7 @@ public class QuizController {
 // UPDATE - HandleGuess
 
     @PostMapping("/{quizId}")
-    public ResponseEntity<Enum> handleGuess(@PathVariable int quizId, @RequestBody PlayerGuessDTO playerGuessDTO) {
+    public ResponseEntity<String> handleGuess(@PathVariable int quizId, @RequestBody PlayerGuessDTO playerGuessDTO) {
         return new ResponseEntity(quizService.handleGuess(playerGuessDTO, quizId), HttpStatus.OK);
     }
 
