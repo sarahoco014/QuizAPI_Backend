@@ -2,6 +2,7 @@ package com.bnta.quiz_API.services;
 
 import com.bnta.quiz_API.models.*;
 import com.bnta.quiz_API.repositories.PlayerRepository;
+import com.bnta.quiz_API.repositories.QuestionRepository;
 import com.bnta.quiz_API.repositories.QuizRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,9 @@ public class QuizService {
 
     @Autowired
     PlayerRepository playerRepository;
+
+    @Autowired
+    QuestionRepository questionRepository;
 
 
 //    CREATE - NEW QUIZ
@@ -88,6 +92,14 @@ public class QuizService {
         Quiz quiz = quizRepository.findById(quizId).get();
         Player player = playerRepository.findById(playerId).get();
         quiz.setCurrentPlayer(player);
+        quizRepository.save(quiz);
+    }
+
+//    UPDATE - ADD QUESTION TO QUIZ
+    public void addQuestionToQuiz(int questionId, int quizId){
+        Quiz quiz = quizRepository.findById(quizId).get();
+        Question question = questionRepository.findById(questionId).get();
+        quiz.getQuestions().add(question);
         quizRepository.save(quiz);
     }
 
