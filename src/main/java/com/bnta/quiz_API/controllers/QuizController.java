@@ -1,5 +1,6 @@
 package com.bnta.quiz_API.controllers;
 
+import com.bnta.quiz_API.models.Player;
 import com.bnta.quiz_API.models.PlayerGuessDTO;
 import com.bnta.quiz_API.models.Quiz;
 import com.bnta.quiz_API.models.QuizDTO;
@@ -58,6 +59,20 @@ public class QuizController {
         return new ResponseEntity(quizService.handleGuess(playerGuessDTO, quizId), HttpStatus.OK);
     }
 
+// UPDATE - AddPlayerToQuiz
+
+//    @PatchMapping("/{quizId}/{playerId}")
+//    public ResponseEntity<Player> addPLayerToQuiz(@PathVariable Integer quizId, Integer playerId){
+//        quizService.addPlayerToQuiz(playerId, quizId);
+//        return new ResponseEntity<>(playerService.getPlayerById(playerId), HttpStatus.OK);
+//
+//    }
+
+    @PatchMapping("/{id}/add-player/{playerId}")
+    public ResponseEntity<Player> addPlayerToQuiz(@PathVariable int id, @PathVariable int playerId) {
+        quizService.addPlayerToQuiz(playerId, id);
+        return new ResponseEntity<>(playerService.getPlayerById(playerId), HttpStatus.OK);
+    }
 
 //    DELETE - Delete Quiz
 

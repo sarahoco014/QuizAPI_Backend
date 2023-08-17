@@ -68,9 +68,13 @@ public class DataLoader implements ApplicationRunner {
         Quiz quiz1 = new Quiz();
         quiz1.getQuestions().add(questionRepository.findById(1).get());
         quiz1.getQuestions().add(questionRepository.findById(2).get());
+        Quiz quiz2 = new Quiz();
+        quiz2.getQuestions().add(questionRepository.findById(1).get());
+        quiz2.getQuestions().add(questionRepository.findById(2).get());
 //        quiz1.getQuestions().add(question2);
         quiz1.setCurrentPlayer(player1);
         quizRepository.save(quiz1);
+        quizRepository.save(quiz2);
 
 
 

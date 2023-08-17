@@ -9,9 +9,9 @@ public class QuizDTO {
     private int score;
 
     public QuizDTO (int currentQuestionIndex, boolean finished, int score){
-        this.currentQuestionIndex = currentQuestionIndex;
-        this.finished = finished;
-        this.score = score;
+        this.currentQuestionIndex = 0;
+        this.finished = false;
+        this.score = 0;
     }
 
     public QuizDTO(){}
