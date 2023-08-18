@@ -27,6 +27,12 @@ public class QuizController {
         return new ResponseEntity<>(quizService.getAllQuizzes(), HttpStatus.CREATED);
     }
 
+//    CREATE - HANDLE GUESS
+    @PostMapping("/{quizId}")
+    public ResponseEntity<String> handleGuess(@PathVariable int quizId, @RequestBody PlayerGuessDTO playerGuessDTO) {
+        return new ResponseEntity(quizService.handleGuess(playerGuessDTO, quizId), HttpStatus.OK);
+    }
+
 //    GET - INDEX
     @GetMapping
     public ResponseEntity<List<Quiz>> getAllQuizzes() {
@@ -43,12 +49,6 @@ public class QuizController {
     @GetMapping("/{id}/questions")
     public ResponseEntity<List<Question>> getQuestionsByQuizId(@PathVariable int id) {
         return new ResponseEntity<>(quizService.listQuizQuestions(id), HttpStatus.OK);
-    }
-
-//    UPDATE - HANDLE GUESS
-    @PostMapping("/{quizId}")
-    public ResponseEntity<String> handleGuess(@PathVariable int quizId, @RequestBody PlayerGuessDTO playerGuessDTO) {
-        return new ResponseEntity(quizService.handleGuess(playerGuessDTO, quizId), HttpStatus.OK);
     }
 
 //    UPDATE - ADD QUESTION TO QUIZ
