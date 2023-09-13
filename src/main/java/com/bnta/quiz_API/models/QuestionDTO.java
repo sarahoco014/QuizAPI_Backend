@@ -9,16 +9,19 @@ public class QuestionDTO {
 
     private String correctAnswer;
 
+    private String fact;
+
     private List<String> options;
 
     private List<Quiz> quizzes;
 
 
-    public QuestionDTO(String questionText, String correctAnswer, List<String> options) {
+    public QuestionDTO(String questionText, String correctAnswer, List<String> options, String fact) {
         this.questionText = questionText;
         this.correctAnswer = correctAnswer;
         this.options = options;
         this.quizzes = new ArrayList<>();
+        this.fact = fact;
     }
 
     public QuestionDTO(){}
@@ -54,6 +57,14 @@ public class QuestionDTO {
 
     public void setQuizzes(List<Quiz> quizzes) {
         this.quizzes = quizzes;
+    }
+
+    public String getFact() {
+        return fact;
+    }
+
+    public void setFact(String fact) {
+        this.fact = fact;
     }
 }
 

@@ -17,7 +17,7 @@ public class QuestionService {
 
 //    CREATE - NEW QUESTION
     public void addQuestion(QuestionDTO questionDTO){
-    Question question = new Question(questionDTO.getQuestionText(), questionDTO.getCorrectAnswer(), questionDTO.getOptions());
+    Question question = new Question(questionDTO.getQuestionText(), questionDTO.getCorrectAnswer(), questionDTO.getOptions(), questionDTO.getFact());
     questionRepository.save(question);
     }
 

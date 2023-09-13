@@ -19,6 +19,8 @@ public class Question {
     @Column (name = "correct_answer")
     private String correctAnswer; // The correct answer is included in the options list
 
+    @Column(length = 1000)
+    private String fact;
     @Column
     private List<String> options; // Changed from a list of Answer objects to Strings, as it was easier to deal with.
 
@@ -26,11 +28,12 @@ public class Question {
     @ManyToMany(mappedBy = "questions") // Many questions to many quizzes
     private List<Quiz> quizzes;
 
-    public Question (String questionText, String correctAnswer, List<String> options){
+    public Question (String questionText, String correctAnswer, List<String> options, String fact){
         this.questionText = questionText;
         this.correctAnswer = correctAnswer;
         this.options = options;
         this.quizzes = new ArrayList<>();
+        this.fact = fact;
     }
 
     public Question(){}
@@ -75,4 +78,14 @@ public class Question {
     public void setQuizzes(List<Quiz> quizzes) {
         this.quizzes = quizzes;
     }
+
+    public String getFact() {
+        return fact;
+    }
+
+    public void setFact(String fact) {
+        this.fact = fact;
+    }
 }
+
+
